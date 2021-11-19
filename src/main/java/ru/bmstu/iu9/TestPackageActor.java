@@ -15,7 +15,10 @@ public class TestPackageActor extends AbstractActor {
                 match(
                         MassageTestPackage.class, m -> {
                             for (Test test : m.getTests()) {
-                                testPer
+                                testPerformRouter.
+                                        tell(
+                                                new Test
+                                        );
                             }
                         }
                 )
