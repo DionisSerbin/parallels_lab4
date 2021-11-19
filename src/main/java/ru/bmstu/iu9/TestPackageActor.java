@@ -8,7 +8,9 @@ public class TestPackageActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create().
                 match(
-                        T
+                        MassageTestPackage.class, m -> {
+                            for ()
+                        }
                 )
     }
 }
