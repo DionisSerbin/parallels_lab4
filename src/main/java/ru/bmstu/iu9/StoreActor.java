@@ -34,7 +34,15 @@ public class StoreActor extends AbstractActor {
                 ).
                 match(
                         GetMessagePackage.class, s -> {
-                            
+                            sender().tell(
+                                    new MessageStor(
+                                            s.getPackageId(),
+                                            store.get(
+                                                    s.getPackageId()
+                                            ),
+                                            self()
+                                    )
+                            );
                         }
                 )
     }
