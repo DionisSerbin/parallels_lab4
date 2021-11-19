@@ -92,6 +92,10 @@ public class AkkaApp extends AllDirectives {
                         ConnectHttp.toHost(SERVER_IP, PORT),
                         materializer
                 );
-        System.out.println("Server ");
+        System.out.println("Server http://localhost:8080/\\nPress RETURN to stop");
+        System.in.read();
+        serverBinding.
+                thenCompose(ServerBinding::unbind).
+                thenAccept(unb)
     }
 }
