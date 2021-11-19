@@ -15,6 +15,7 @@ public class AkkaApp extends AllDirectives {
         final ActorSystem system = ActorSystem.create("lab4");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
+        AkkaApp 
         ActorRef router = system.actorOf(Props.create(ActorRouter.class));
     }
 }
