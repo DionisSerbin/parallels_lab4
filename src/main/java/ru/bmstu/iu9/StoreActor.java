@@ -39,12 +39,13 @@ public class StoreActor extends AbstractActor {
                                             s.getPackageId(),
                                             store.get(
                                                     s.getPackageId()
-                                            ),
-                                            self()
-                                    )
+                                            )
+                                    ),
+                                    self()
                             );
                         }
-                )
+                ).
+                build();
     }
 
     public Map<Integer, ArrayList<Test>> getStore() {
