@@ -96,6 +96,6 @@ public class AkkaApp extends AllDirectives {
         System.in.read();
         serverBinding.
                 thenCompose(ServerBinding::unbind).
-                thenAccept(unb)
+                thenAccept(unbound -> system.terminate());
     }
 }
