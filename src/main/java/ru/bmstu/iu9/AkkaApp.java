@@ -5,6 +5,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
@@ -24,20 +25,40 @@ public class AkkaApp extends AllDirectives {
     private static final String TEST_PERFORM_ACTOR = "testPerformActor";
     private static final Integer POOLS_NUMBER = 5;
     private static final String ID_PACKAGE_STRING = "packageId";
+    private static final Integer TIME_OUT = 5000;
 
-    private Route createRoute() {
+    private Route createRoute(ActorRef storeActor, ActorRef testPackageActor,
+                              ActorRef testPerformActor) {
         return route(
                 get(
                         () -> parameter(
                                 ID_PACKAGE_STRING,
                                 (packageId) -> {
                                     CompletionStage<Object> res = PatternsCS.ask(
-                                            store
-                                    )
+                                            storeActor,
+                                            new GetMessagePackage(Integer.parseInt(packageId)),
+                                            TIME_OUT
+                                    );
+                                    return completeOKWithFuture(
+                                            res,
+                                            Jackson.marshaller()
+                                    );
                                 }
                         )
+                ),
+                post(
+                        () ->
+                                entity(
+                                        Jackson.unmarshaller(MassageTestPackage.class),
+                                        m -> {
+                                            testPackageActor.tell(m, ActorRef.noSender());
+                                            return complete("Test is going");
+                                        }
+                                        )
+
                 )
-        )
+        );
+
     }
 
     public static void main(String[] args) throws IOException {
@@ -55,6 +76,6 @@ public class AkkaApp extends AllDirectives {
                 HttpRequest,
                 HttpResponse,
                 NotUsed
-                > route =
+                > route = createRoute(storeActor, testPackageActor, testPerformActor)
     }
 }
