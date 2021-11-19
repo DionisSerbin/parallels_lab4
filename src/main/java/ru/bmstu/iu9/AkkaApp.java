@@ -18,6 +18,6 @@ public class AkkaApp extends AllDirectives {
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
-        test
+        ActorRef testPackageActor = system.actorOf(Props.create(TestPackageActor.class), )
     }
 }
