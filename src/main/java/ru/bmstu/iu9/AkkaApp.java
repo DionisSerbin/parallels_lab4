@@ -11,11 +11,12 @@ import java.io.IOException;
 
 public class AkkaApp extends AllDirectives {
 
+    private static final String STORE_ACTOR = "storeActor";
+
     public static void main(String[] args) throws IOException {
         final ActorSystem system = ActorSystem.create("lab4");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        AkkaApp 
-        ActorRef router = system.actorOf(Props.create(ActorRouter.class));
+        ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
     }
 }
