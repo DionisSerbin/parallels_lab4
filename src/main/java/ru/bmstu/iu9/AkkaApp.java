@@ -72,11 +72,13 @@ public class AkkaApp extends AllDirectives {
                 new RoundRobinPool(POOLS_NUMBER).
                         props(Props.create(TestActor.class)),
                 TEST_PERFORM_ACTOR);
+
+        final AkkaApp akkaApp = new AkkaApp();
         final Flow<
                 HttpRequest,
                 HttpResponse,
                 NotUsed
-                > route = createRoute(storeActor, testPackageActor, testPerformActor).
+                > route = akkaApp.createRoute(storeActor, testPackageActor, testPerformActor).
                     flow(system, materializer);
     }
 }
