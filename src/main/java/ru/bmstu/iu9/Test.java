@@ -25,10 +25,14 @@ public class Test {
     private boolean result;
 
     @JsonCreator
-    public Test(, @JsonProperty(EXPECTED_RESULT_STRING) String testName,
-                  @JsonProperty(EXPECTED_RESULT_STRING) String expectedREsult,
-                  @JsonProperty(PARAMS_STRING),
-            ,){
+    public Test(@JsonProperty(EXPECTED_RESULT_STRING) String testName,
+                @JsonProperty(EXPECTED_RESULT_STRING) String expectedREsult,
+                @JsonProperty(PARAMS_STRING) ArrayList<Integer> params){
+
+        this.testName = testName;
+        this.expectedREsult = expectedREsult;
+        this.params = params;
+        this.result = false;
 
     }
 }
