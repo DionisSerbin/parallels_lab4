@@ -29,7 +29,8 @@ public class AkkaApp extends AllDirectives {
     private static final Integer POOLS_NUMBER = 5;
     private static final String ID_PACKAGE_STRING = "packageId";
     private static final Integer TIME_OUT = 5000;
-    private static final String 
+    private static final String SERVER_IP = "localhost";
+    private static final Integer PORT = 8080;
 
     private Route createRoute(ActorRef storeActor, ActorRef testPackageActor,
                               ActorRef testPerformActor) {
@@ -88,7 +89,9 @@ public class AkkaApp extends AllDirectives {
         final CompletionStage<ServerBinding> serverBinding = http.
                 bindAndHandle(
                         route,
-                        ConnectHttp.toHost()
+                        ConnectHttp.toHost(SERVER_IP, PORT),
+                        materializer
                 );
+        System.out.println("Server ");
     }
 }
