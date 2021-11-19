@@ -4,7 +4,9 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
@@ -13,6 +15,7 @@ import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
+import akka.stream.Server;
 import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
@@ -26,6 +29,7 @@ public class AkkaApp extends AllDirectives {
     private static final Integer POOLS_NUMBER = 5;
     private static final String ID_PACKAGE_STRING = "packageId";
     private static final Integer TIME_OUT = 5000;
+    private static final String 
 
     private Route createRoute(ActorRef storeActor, ActorRef testPackageActor,
                               ActorRef testPerformActor) {
@@ -80,5 +84,11 @@ public class AkkaApp extends AllDirectives {
                 NotUsed
                 > route = akkaApp.createRoute(storeActor, testPackageActor, testPerformActor).
                     flow(system, materializer);
+
+        final CompletionStage<ServerBinding> serverBinding = http.
+                bindAndHandle(
+                        route,
+                        ConnectHttp.toHost()
+                );
     }
 }
