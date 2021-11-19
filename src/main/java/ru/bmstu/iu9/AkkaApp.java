@@ -76,6 +76,7 @@ public class AkkaApp extends AllDirectives {
                 HttpRequest,
                 HttpResponse,
                 NotUsed
-                > route = createRoute(storeActor, testPackageActor, testPerformActor)
+                > route = createRoute(storeActor, testPackageActor, testPerformActor).
+                    flow(system, materializer);
     }
 }
