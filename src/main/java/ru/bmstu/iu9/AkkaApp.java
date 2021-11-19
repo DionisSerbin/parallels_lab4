@@ -1,13 +1,13 @@
 package ru.bmstu.iu9;
 
 import akka.actor.ActorRef;
-import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.server.AllDirectives;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
 
@@ -27,7 +27,8 @@ public class AkkaApp extends AllDirectives {
                 TEST_PACKAGE_ACTOR );
         ActorRef testPerformActor = system.actorOf(
                 new RoundRobinPool(POOLS_NUMBER).
-                        props(Props.create(Tes)),
+                        props(Props.create(TestActor.class)),
                 TEST_PERFORM_ACTOR);
+        final Flow
     }
 }
