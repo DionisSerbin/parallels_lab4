@@ -10,7 +10,7 @@ public class TestActor extends AbstractActor {
 
     private ActorSelection store = getContext().actorSelection("/user/storeActor");
 
-    private ArrayList<Test> 
+    private ArrayList<Test> buildTest()
 
     @Override
     public Receive createReceive() {
