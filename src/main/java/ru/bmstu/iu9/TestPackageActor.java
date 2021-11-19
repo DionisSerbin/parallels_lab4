@@ -1,4 +1,10 @@
 package ru.bmstu.iu9;
 
-public class TestPackageActor {
+import akka.actor.AbstractActor;
+
+public class TestPackageActor extends AbstractActor {
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }
