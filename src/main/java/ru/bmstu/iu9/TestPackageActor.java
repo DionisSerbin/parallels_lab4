@@ -20,11 +20,14 @@ public class TestPackageActor extends AbstractActor {
                                                 new TestMessage(
                                                         m.getPackageId(),
                                                         m.getJsScript(),
-                                                        m.
-                                                )
+                                                        m.getFunctionName(),
+                                                        test
+                                                ),
+                                                self()
                                         );
                             }
                         }
-                )
+                ).
+                build();
     }
 }

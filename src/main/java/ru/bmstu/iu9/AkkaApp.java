@@ -12,7 +12,7 @@ import java.io.IOException;
 public class AkkaApp extends AllDirectives {
 
     private static final String STORE_ACTOR = "storeActor";
-    private final String TEST_PACKAGE_ACTOR = "testPackageActor";
+    private static final String TEST_PACKAGE_ACTOR = "testPackageActor";
 
     public static void main(String[] args) throws IOException {
         final ActorSystem system = ActorSystem.create("lab4");
