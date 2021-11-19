@@ -37,11 +37,20 @@ public class TestActor extends AbstractActor {
                             tell(
                                     new MessageStor(
                                             m.getPackageId(),
+                                            buildTest(
+                                                    m.getJsScript(),
+                                                    m.getFunctionName(),
+                                                    m.getTest().getTestName(),
+                                                    m.getTest().getExpectedREsult(),
+                                                    m.getTest().getParams()
+                                            )
 
-                                    )
+                                    ),
+                                    self()
                             );
                 }
-                )
+                ).
+                build();
 
     }
 
