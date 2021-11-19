@@ -25,7 +25,8 @@ public class TestActor extends AbstractActor {
         Test test = new Test(testName, expectedResult,
                 params, expectedResult.equals(res));
         ArrayList<Test> testsNow = new ArrayList<>();
-        test
+        testsNow.add(test);
+        return testsNow;
     }
 
     @Override
