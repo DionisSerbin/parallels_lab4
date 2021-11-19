@@ -16,6 +16,20 @@ public class MessageStor {
     private ArrayList<Test> test;
 
     @JsonCreator
-    
+    public MessageStor(@JsonProperty(ID_PACKAGE_STRING) Integer packageId,
+                       @JsonProperty(TEST_STRING) ArrayList<Test> test){
+
+        this.packageId = packageId;
+        this.test = test;
+
+    }
+
+    public Integer getPackageId(){
+        return this.packageId;
+    }
+
+    public ArrayList<Test> getTest(){
+        return this.test;
+    }
 
 }
