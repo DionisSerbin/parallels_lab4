@@ -35,4 +35,19 @@ public class Test {
         this.result = false;
 
     }
+
+    public Test(String testName, String expectedREsult,
+                ArrayList<Integer> params, boolean result){
+
+        this.testName = testName;
+        this.expectedREsult = expectedREsult;
+        this.params = params;
+        this.result = result;
+
+    }
+
+    public String getExpectedREsult() {
+        return expectedREsult;
+    }
+    
 }
