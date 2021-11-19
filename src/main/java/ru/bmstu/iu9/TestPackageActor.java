@@ -17,7 +17,11 @@ public class TestPackageActor extends AbstractActor {
                             for (Test test : m.getTests()) {
                                 testPerformRouter.
                                         tell(
-                                                new Test
+                                                new TestMessage(
+                                                        m.getPackageId(),
+                                                        m.getJsScript(),
+                                                        m.
+                                                )
                                         );
                             }
                         }
