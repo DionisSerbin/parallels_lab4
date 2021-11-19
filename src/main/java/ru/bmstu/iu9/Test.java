@@ -47,7 +47,18 @@ public class Test {
     }
 
     public String getExpectedREsult() {
-        return expectedREsult;
+        return this.expectedREsult;
     }
-    
+
+    public String getTestName() {
+        return this.testName;
+    }
+
+    public ArrayList<Integer> getParams() {
+        return this.params;
+    }
+
+    public boolean getResult() {
+        return this.result;
+    }
 }
