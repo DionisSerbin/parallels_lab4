@@ -12,4 +12,5 @@ public class Test {
 
     @JsonProperty(EXPECTED_RESULT_STRING)
     private String expectedREsult;
+    
 }
