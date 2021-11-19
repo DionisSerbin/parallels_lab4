@@ -12,6 +12,5 @@ public class AkkaApp extends AllDirectives {
     public static void main(String[] args) throws IOException {
         final ActorSystem system = ActorSystem.create("lab4");
         ActorRef router = system.actorOf(Props.create(ActorRouter.class));
-        Actorro
     }
 }
