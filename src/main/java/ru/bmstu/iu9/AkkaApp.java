@@ -17,9 +17,10 @@ public class AkkaApp extends AllDirectives {
     public static void main(String[] args) throws IOException {
         final ActorSystem system = ActorSystem.create("lab4");
         final Http http = Http.get(system);
-        final ActorMaterializer materializer = ActorMaterializer.create(system);
+        ActorMaterializer.create(system);
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
         ActorRef testPackageActor = system.actorOf(Props.create(TestPackageActor.class),
                 TEST_PACKAGE_ACTOR );
+
     }
 }
