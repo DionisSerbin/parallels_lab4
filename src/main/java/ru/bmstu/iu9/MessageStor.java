@@ -12,6 +12,6 @@ public class MessageStor {
     private Integer packageId;
 
     @JsonProperty(TEST_STRING)
-    private ArrayList<>
+    private ArrayList<Test> test;
 
 }
