@@ -9,11 +9,13 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
+import java.util.concurrent.CompletionStage;
 
 public class AkkaApp extends AllDirectives {
 
@@ -26,7 +28,12 @@ public class AkkaApp extends AllDirectives {
     private Route createRoute() {
         return route(
                 get(
-                        () -> parameter(())
+                        () -> parameter(
+                                ID_PACKAGE_STRING,
+                                (packageId) -> {
+                                    CompletionStage<Object> res = PatternsCS.ask()
+                                }
+                        )
                 )
         )
     }
