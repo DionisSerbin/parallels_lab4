@@ -14,13 +14,24 @@ public class StoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().
-                match( MessageStor.class, m ->{
+                match( MessageStor.class, m -> {
                     if (store.containsKey(m.getPackageId())) {
                         ArrayList<Test> testNow = store.get(m.getPackageId());
-                        testNow.addAll()
+                        testNow.addAll(m.getTest());
+                        store.replace(
+                                m.getPackageId(),
+                                m.getTest()
+                        );
+                    } else {
+                        store.put(
+                                m.getPackageId(),
+                                m.getTest()
+
+                        );
                     }
                 }
-                );
+                ).
+                match()
     }
 
     public Map<Integer, ArrayList<Test>> getStore() {
