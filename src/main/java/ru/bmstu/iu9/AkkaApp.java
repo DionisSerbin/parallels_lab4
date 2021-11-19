@@ -31,7 +31,9 @@ public class AkkaApp extends AllDirectives {
                         () -> parameter(
                                 ID_PACKAGE_STRING,
                                 (packageId) -> {
-                                    CompletionStage<Object> res = PatternsCS.ask()
+                                    CompletionStage<Object> res = PatternsCS.ask(
+                                            store
+                                    )
                                 }
                         )
                 )
