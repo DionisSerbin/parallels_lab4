@@ -16,4 +16,7 @@ public class MassageTestPackage {
     @JsonProperty(JS_SCRIPT_STRING)
     private String jsScript;
 
+    @JsonProperty(FUNCTION_NAME_STRING)
+    private String functionName;
+
 }
