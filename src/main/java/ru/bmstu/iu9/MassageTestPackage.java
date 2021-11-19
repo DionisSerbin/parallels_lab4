@@ -13,5 +13,7 @@ public class MassageTestPackage {
     @JsonProperty(ID_PACKAGE_STRING)
     private Integer packageId;
 
-    
+    @JsonProperty(JS_SCRIPT_STRING)
+    private String jsScript;
+
 }
