@@ -32,6 +32,23 @@ public class MassageTestPackage {
 
         this.packageId = packageId;
         this.jsScript = jsScript;
+        this.functionName = functionName;
+        this.tests = tests;
+    }
 
+    public Integer getPackageId() {
+        return this.packageId;
+    }
+
+    public ArrayList<Test> getTests() {
+        return this.tests;
+    }
+
+    public String getFunctionName() {
+        return this.functionName;
+    }
+
+    public String getJsScript() {
+        return this.jsScript;
     }
 }
