@@ -67,10 +67,10 @@ public class AkkaApp extends AllDirectives {
     }
 
     private AkkaApp(final ActorSystem system) {
-        ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
-        ActorRef testPackageActor = system.actorOf(Props.create(TestPackageActor.class),
+        storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
+        testPackageActor = system.actorOf(Props.create(TestPackageActor.class),
                 TEST_PACKAGE_ACTOR );
-        ActorRef testPerformActor = system.actorOf(
+        testPerformActor = system.actorOf(
                 new RoundRobinPool(POOLS_NUMBER).
                         props(Props.create(TestActor.class)),
                 TEST_PERFORM_ACTOR);
