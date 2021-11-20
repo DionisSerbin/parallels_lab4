@@ -25,7 +25,7 @@ public class Test {
     private boolean result;
 
     @JsonCreator
-    public Test(@JsonProperty(EXPECTED_RESULT_STRING) String testName,
+    public Test(@JsonProperty(TEST_NAME_STRING) String testName,
                 @JsonProperty(EXPECTED_RESULT_STRING) String expectedResult,
                 @JsonProperty(PARAMS_STRING) ArrayList<Integer> params){
 
