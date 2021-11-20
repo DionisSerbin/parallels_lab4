@@ -27,7 +27,7 @@ public class AkkaApp{
     private ActorRef testPerformActor;
     private static final String STORE_ACTOR = "storeActor";
     private static final String TEST_PACKAGE_ACTOR = "testPackageActor";
-    private static final String TEST_PERFORM_ACTOR = "testPerformActor";
+    private static final String TEST_PERFORMER_ACTOR = "testPerformerActor";
     private static final Integer POOLS_NUMBER = 5;
     private static final String ID_PACKAGE_STRING = "packageId";
     private static final Integer TIME_OUT = 5000;
@@ -41,7 +41,7 @@ public class AkkaApp{
         testPerformActor = system.actorOf(
                 new RoundRobinPool(POOLS_NUMBER).
                         props(Props.create(TestActor.class)),
-                TEST_PERFORM_ACTOR);
+                TEST_PERFORMER_ACTOR);
     }
 
     private Route createRoute() {
