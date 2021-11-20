@@ -10,7 +10,6 @@ import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
-import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
@@ -20,7 +19,9 @@ import akka.stream.javadsl.Flow;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
-public class AkkaApp extends AllDirectives {
+import static akka.http.javadsl.server.Directives.*;
+
+public class AkkaApp{
     private ActorRef storeActor;
     private ActorRef testPackageActor;
     private ActorRef testPerformActor;
@@ -68,7 +69,7 @@ public class AkkaApp extends AllDirectives {
                                     testPackageActor.tell(m, ActorRef.noSender());
                                     return complete("Test is going");
                                 }
-                                )
+                        )
 
                 )
         );
