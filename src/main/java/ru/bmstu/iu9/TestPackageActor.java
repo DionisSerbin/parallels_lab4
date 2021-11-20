@@ -7,7 +7,7 @@ import akka.japi.pf.ReceiveBuilder;
 public class TestPackageActor extends AbstractActor {
 
     private ActorSelection testPerformRouter = getContext().
-            actorSelection("/user/testPerformActor");
+            actorSelection("/user/testPerformerActor");
 
     @Override
     public Receive createReceive() {
