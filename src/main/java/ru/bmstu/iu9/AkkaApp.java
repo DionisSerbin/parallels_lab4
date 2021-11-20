@@ -52,14 +52,13 @@ public class AkkaApp extends AllDirectives {
                         )
                 ),
                 post(
-                        () ->
-                                entity(
-                                        Jackson.unmarshaller(MassageTestPackage.class),
-                                        m -> {
-                                            testPackageActor.tell(m, ActorRef.noSender());
-                                            return complete("Test is going");
-                                        }
-                                        )
+                        () -> entity(
+                                Jackson.unmarshaller(MassageTestPackage.class),
+                                m -> {
+                                    testPackageActor.tell(m, ActorRef.noSender());
+                                    return complete("Test is going");
+                                }
+                                )
 
                 )
         );
