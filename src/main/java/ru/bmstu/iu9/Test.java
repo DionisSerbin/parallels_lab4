@@ -26,21 +26,21 @@ public class Test {
 
     @JsonCreator
     public Test(@JsonProperty(EXPECTED_RESULT_STRING) String testName,
-                @JsonProperty(EXPECTED_RESULT_STRING) String expectedREsult,
+                @JsonProperty(EXPECTED_RESULT_STRING) String expectedResult,
                 @JsonProperty(PARAMS_STRING) ArrayList<Integer> params){
 
         this.testName = testName;
-        this.expectedResult = expectedREsult;
+        this.expectedResult = expectedResult;
         this.params = params;
         this.result = false;
 
     }
 
-    public Test(String testName, String expectedREsult,
+    public Test(String testName, String expectedResult,
                 ArrayList<Integer> params, boolean result){
 
         this.testName = testName;
-        this.expectedResult = expectedREsult;
+        this.expectedResult = expectedResult;
         this.params = params;
         this.result = result;
 
