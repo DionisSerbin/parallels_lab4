@@ -34,6 +34,16 @@ public class AkkaApp extends AllDirectives {
     private static final String SERVER_IP = "localhost";
     private static final Integer PORT = 8080;
 
+    private AkkaApp(final ActorSystem system) {
+        storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
+        testPackageActor = system.actorOf(Props.create(TestPackageActor.class),
+                TEST_PACKAGE_ACTOR );
+        testPerformActor = system.actorOf(
+                new RoundRobinPool(POOLS_NUMBER).
+                        props(Props.create(TestActor.class)),
+                TEST_PERFORM_ACTOR);
+    }
+
     private Route createRoute() {
         return route(
                 get(
@@ -64,16 +74,6 @@ public class AkkaApp extends AllDirectives {
                 )
         );
 
-    }
-
-    private AkkaApp(final ActorSystem system) {
-        storeActor = system.actorOf(Props.create(StoreActor.class), STORE_ACTOR );
-        testPackageActor = system.actorOf(Props.create(TestPackageActor.class),
-                TEST_PACKAGE_ACTOR );
-        testPerformActor = system.actorOf(
-                new RoundRobinPool(POOLS_NUMBER).
-                        props(Props.create(TestActor.class)),
-                TEST_PERFORM_ACTOR);
     }
 
     public static void main(String[] args) throws IOException {
