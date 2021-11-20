@@ -15,7 +15,6 @@ import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
-import akka.stream.Server;
 import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
@@ -96,7 +95,7 @@ public class AkkaApp extends AllDirectives {
                         ConnectHttp.toHost(SERVER_IP, PORT),
                         materializer
                 );
-        System.out.println("Server http://localhost:8080/\\nPress RETURN to stop");
+        System.out.println("Server is going");
         System.in.read();
         serverBinding.
                 thenCompose(ServerBinding::unbind).
