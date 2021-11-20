@@ -16,7 +16,7 @@ public class Test {
     private String testName;
 
     @JsonProperty(EXPECTED_RESULT_STRING)
-    private String expectedREsult;
+    private String expectedResult;
 
     @JsonProperty(PARAMS_STRING)
     private ArrayList<Integer> params;
@@ -30,7 +30,7 @@ public class Test {
                 @JsonProperty(PARAMS_STRING) ArrayList<Integer> params){
 
         this.testName = testName;
-        this.expectedREsult = expectedREsult;
+        this.expectedResult = expectedREsult;
         this.params = params;
         this.result = false;
 
@@ -40,14 +40,14 @@ public class Test {
                 ArrayList<Integer> params, boolean result){
 
         this.testName = testName;
-        this.expectedREsult = expectedREsult;
+        this.expectedResult = expectedREsult;
         this.params = params;
         this.result = result;
 
     }
 
-    public String getExpectedREsult() {
-        return this.expectedREsult;
+    public String getExpectedResult() {
+        return this.expectedResult;
     }
 
     public String getTestName() {
