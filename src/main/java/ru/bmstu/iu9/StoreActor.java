@@ -21,7 +21,7 @@ public class StoreActor extends AbstractActor {
                             testNow.addAll(m.getTest());
                             store.replace(
                                     m.getPackageId(),
-                                    m.getTest()
+                                    
                             );
                         } else {
                             store.put(
